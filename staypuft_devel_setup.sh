@@ -9,23 +9,6 @@ cd /usr/share
 
 # === clone repos ===
 
-git clone https://github.com/theforeman/foreman-installer foreman-installer_git || true
-pushd foreman-installer_git
-if [ "${RENAME_ORIGIN_TO_UPSTREAM:-}" = 'true' ]; then
-    git remote rename origin upstream || true
-fi
-popd
-
-git clone https://github.com/theforeman/foreman-installer-staypuft foreman-installer-staypuft_git || true
-pushd foreman-installer-staypuft_git
-if [ "${RENAME_ORIGIN_TO_UPSTREAM:-}" = 'true' ]; then
-    git remote rename origin upstream || true
-fi
-if [ "${GITHUB_NAME:-}" != '' ]; then
-    git remote add $GITHUB_NAME ssh://git@github.com/$GITHUB_NAME/foreman-installer-staypuft || true
-fi
-popd
-
 git clone https://github.com/theforeman/foreman foreman_git || true
 pushd foreman_git
 if [ "${RENAME_ORIGIN_TO_UPSTREAM:-}" = 'true' ]; then
@@ -89,4 +72,4 @@ popd
 # /usr/share/foreman_git as the foreman directory
 service foreman-tasks stop
 
-"$DIR/refresh.sh"
+"$DIR/staypuft_refresh.sh"

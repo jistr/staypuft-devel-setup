@@ -9,8 +9,8 @@ Passenger configuration and database configuration. See
 
 How i run the script:
 
-    RENAME_ORIGIN_TO_UPSTREAM=true GITHUB_NAME=jistr /usr/share/staypuft-devel-setup/devel_setup.sh
+    RENAME_ORIGIN_TO_UPSTREAM=true GITHUB_NAME=jistr /usr/share/staypuft-devel-setup/staypuft_devel_setup.sh
 
 And when i update the source code:
 
-    /usr/share/staypuft-devel-setup/refresh.sh
+    /usr/share/staypuft-devel-setup/staypuft_refresh.sh
