@@ -8,3 +8,4 @@ scl enable ruby193 'RAILS_ENV=production su foreman -c "bundle exec rake db:migr
 popd
 
 service httpd restart
+FOREMAN_HOME=/usr/share/foreman_git service foreman-tasks restart

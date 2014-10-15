@@ -85,4 +85,8 @@ popd
 
 # === refresh all the things and restart httpd ===
 
+# stop foreman-tasks, refresh.sh will start it with
+# /usr/share/foreman_git as the foreman directory
+service foreman-tasks stop
+
 "$DIR/refresh.sh"
