@@ -17,14 +17,14 @@ fi
 cp -r "$STAYPUFT_INSTALLER_DIR/modules" "$FOREMAN_INSTALLER_DIR"
 cp -r "$STAYPUFT_INSTALLER_DIR/hooks" "$FOREMAN_INSTALLER_DIR"
 
-if [[ "$STAYPUFT_INSTALLER_BIN" = 'true' ]]; then
+if [[ "${STAYPUFT_INSTALLER_BIN:-}" = 'true' ]]; then
     cp "$STAYPUFT_INSTALLER_DIR/bin/staypuft-installer" /usr/sbin
     chmod a+x /usr/sbin/staypuft-installer
     cp "$STAYPUFT_INSTALLER_DIR/bin/staypuft-client-installer" /usr/sbin
     chmod a+x /usr/sbin/staypuft-client-installer
 fi
 
-if [[ "$STAYPUFT_INSTALLER_CONFIG" = 'true' ]]; then
+if [[ "${STAYPUFT_INSTALLER_CONFIG:-}" = 'true' ]]; then
     cp "$STAYPUFT_INSTALLER_DIR/config/staypuft-installer.answers.yaml" /etc/foreman
     cp "$STAYPUFT_INSTALLER_DIR/config/staypuft-installer.yaml" /etc/foreman
     cp "$STAYPUFT_INSTALLER_DIR/config/staypuft-client-installer.yaml" /etc/foreman
@@ -36,7 +36,7 @@ if [[ "$STAYPUFT_INSTALLER_CONFIG" = 'true' ]]; then
     popd
 fi
 
-if [[ "$STAYPUFT_INSTALLER_MODULES" = 'true' ]]; then
+if [[ "${STAYPUFT_INSTALLER_MODULES:-}" = 'true' ]]; then
     rm -rf /etc/puppet/environments/production/modules/foreman
     cp -r "$FOREMAN_INSTALLER_DIR/modules/foreman" /etc/puppet/environments/production/modules/foreman
 fi

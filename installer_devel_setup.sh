@@ -28,12 +28,21 @@ popd
 
 # === initial misc setup ===
 
+cp -ra /usr/share/foreman-installer/modules /usr/share/foreman-installer_git/modules
+
 pushd /etc/foreman
 sed -i 's#share/foreman-installer$#share/foreman-installer_git#g' ./staypuft-installer.yaml
-sed -i 's#share/foreman-installer$#share/foreman-installer_git#g' ./staypuft-client-installer.yaml
 sed -i 's#share/foreman-installer/#share/foreman-installer_git/#g' ./staypuft-installer.yaml
-sed -i 's#share/foreman-installer/#share/foreman-installer_git/#g' ./staypuft-client-installer.yaml
+sed -i 's#share/foreman-installer$#share/foreman-installer_git#g' ./staypuft-client-installer.yaml || true
+sed -i 's#share/foreman-installer/#share/foreman-installer_git/#g' ./staypuft-client-installer.yaml || true
+sed -i 's#share/foreman$#share/foreman_git#g' ./staypuft-installer.answers.yaml
+sed -i 's#share/foreman/#share/foreman_git/#g' ./staypuft-installer.answers.yaml
 popd
+
+service foreman-tasks stop
+sed -i 's#share/foreman}#share/foreman_git}#g' /etc/init.d/foreman-tasks
+sed -i 's#share/foreman$#share/foreman_git#g' /etc/sysconfig/foreman-tasks
+sed -i 's#share/foreman"#share/foreman_git"#g' /usr/bin/foreman-tasks
 
 
 # === refresh all the things ===

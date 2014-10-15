@@ -29,7 +29,6 @@ popd
 
 # === initial misc setup ===
 
-chsh -s /bin/bash foreman
 yum install -y gcc ruby193-ruby-devel ruby-devel libxml2 libxml2-devel libxslt libxslt-devel postgresql-libs postgresql-devel gcc-c++
 cp -a foreman/config/database.yml foreman_git/config/
 cp -a foreman/config/settings.yaml foreman_git/config/
@@ -50,7 +49,9 @@ touch log/production.log
 chmod 0666 log/production.log
 
 scl enable ruby193 'bundle config build.nokogiri --use-system-libraries'
-scl enable ruby193 'bundle install --path .bundle/data --without sqlite mysql mysql2 libvirt vmware gce'
+# need to install into system gems if we want staypuft-installer to work too
+scl enable ruby193 'bundle install --without sqlite mysql mysql2 libvirt vmware gce'
+# scl enable ruby193 'bundle install --path .bundle/data --without sqlite mysql mysql2 libvirt vmware gce'
 
 chown -R foreman .
 popd
