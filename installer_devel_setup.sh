@@ -39,11 +39,6 @@ sed -i 's#share/foreman$#share/foreman_git#g' ./staypuft-installer.answers.yaml
 sed -i 's#share/foreman/#share/foreman_git/#g' ./staypuft-installer.answers.yaml
 popd
 
-service foreman-tasks stop
-sed -i 's#share/foreman}#share/foreman_git}#g' /etc/init.d/foreman-tasks
-sed -i 's#share/foreman$#share/foreman_git#g' /etc/sysconfig/foreman-tasks
-sed -i 's#share/foreman"#share/foreman_git"#g' /usr/bin/foreman-tasks
-
 
 # === refresh all the things ===
 

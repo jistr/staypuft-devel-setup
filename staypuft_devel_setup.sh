@@ -72,5 +72,8 @@ popd
 # stop foreman-tasks, refresh.sh will start it with
 # /usr/share/foreman_git as the foreman directory
 service foreman-tasks stop
+sed -i 's#share/foreman}#share/foreman_git}#g' /etc/init.d/foreman-tasks
+sed -i 's#share/foreman$#share/foreman_git#g' /etc/sysconfig/foreman-tasks
+sed -i 's#share/foreman"#share/foreman_git"#g' /usr/bin/foreman-tasks
 
 "$DIR/staypuft_refresh.sh"
