@@ -39,6 +39,8 @@ sed -i 's#share/foreman$#share/foreman_git#g' ./staypuft-installer.answers.yaml
 sed -i 's#share/foreman/#share/foreman_git/#g' ./staypuft-installer.answers.yaml
 popd
 
+# === use bundler + scl with foreman-rake ===
+sed -i 's#-c "'\''RAILS_ENV=production $CMD'\''"#-c "scl enable ruby193 '\''RAILS_ENV=production $CMD'\''#g' /usr/sbin/foreman-rake
 
 # === refresh all the things ===
 
