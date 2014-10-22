@@ -53,9 +53,10 @@ scl enable ruby193 'bundle config build.nokogiri --use-system-libraries'
 scl enable ruby193 'bundle install --without sqlite mysql mysql2 libvirt vmware gce'
 # scl enable ruby193 'bundle install --path .bundle/data --without sqlite mysql mysql2 libvirt vmware gce'
 
-chown -R foreman .
 popd
 
+chown -R foreman foreman_git
+chown -R foreman staypuft_git
 
 # === passenger settings ===
 
